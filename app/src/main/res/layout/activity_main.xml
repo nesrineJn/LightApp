@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E1E1E"
+    android:padding="16dp"
+    android:id="@+id/main_layout">
+
+    <!-- Conteneur pour l'icône et la barre de progression -->
+    <LinearLayout
+        android:id="@+id/brightness_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="32dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Icône de luminosité -->
+        <ImageView
+            android:id="@+id/brightness_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/brightness"
+            android:layout_marginEnd="8dp"
+            app:tint="#FFFFFF" />
+
+        <!-- Barre de réglage pour la luminosité -->
+        <SeekBar
+            android:id="@+id/brightness_seekbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="50"
+            />
+    </LinearLayout>
+
+
+    <!-- Bouton circulaire ON/OFF -->
+    <FrameLayout
+        android:id="@+id/on_off_button"
+        android:layout_width="175dp"
+        android:layout_height="181dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/on_off_button_background"
+        android:elevation="10dp"
+        android:onClick="toggleAutoBrightness">
+
+        <ImageView
+            android:id="@+id/on_off_icon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_power"
+            app:tint="#00FF00" />
+    </FrameLayout>
+
+    <!-- Option 1 : Ajustement selon batterie -->
+    <FrameLayout
+        android:id="@+id/battery_option"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/on_off_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/option_circle_background"
+        android:elevation="5dp"
+        android:onClick="activateBatteryMode">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_battery"
+            app:tint="#FFFFFF" />
+    </FrameLayout>
+
+    <!-- Option 2 : Mode lecture -->
+    <FrameLayout
+        android:id="@+id/reading_option"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/on_off_button"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="-27dp"
+        android:layout_toLeftOf="@id/on_off_button"
+        android:background="@drawable/option_circle_background"
+        android:elevation="5dp"
+        android:onClick="toggleReadingMode">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_reading"
+            app:tint="#FFFFFF" />
+    </FrameLayout>
+
+    <!-- Option 3 : Mode vocal -->
+    <FrameLayout
+        android:id="@+id/voice_option"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@id/on_off_button"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="-37dp"
+        android:layout_toRightOf="@id/on_off_button"
+        android:background="@drawable/option_circle_background"
+        android:elevation="5dp"
+        android:onClick="openVoiceControlActivity">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_voice"
+            app:tint="#FFFFFF" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/auto_adjustment_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/on_off_button"
+        android:layout_marginTop="153dp"
+        android:gravity="center"
+        android:text="Activer le mode automatique pour ajuster la luminosité"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+</RelativeLayout>
